@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+
+<title>Product comparison</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+body{margin-top:0;background-color: black;}
+
+.comparison-table {
+    width: 100%;
+    font-size: .875rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar
+}
+
+.comparison-table table {
+  background: lightgreen;
+    min-width: 41rem;
+    table-layout: fixed
+}
+
+.comparison-table table tbody+tbody {
+    border-top-width: 1px
+}
+
+.comparison-table .table-bordered thead td {
+    border-bottom-width: 1px
+}
+
+.comparison-table .comparison-item {
+    position: relative;
+    padding: .875rem .75rem 1.125rem;
+    border: 1px solid lightgreen;
+    background-color: lightgreen;
+    text-align: center
+}
+
+.comparison-table .comparison-item .comparison-item-thumb {
+    display: block;
+    width: 12rem; /* Modified width */
+    height: auto; /* Modified height */
+    margin-right: auto;
+    margin-bottom: .75rem;
+    margin-left: auto
+}
+
+.comparison-table .comparison-item .comparison-item-thumb>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.comparison-table .comparison-item .comparison-item-title {
+    display: block;
+    width: 100%;
+    margin-bottom: 14px;
+    color: #222;
+    font-weight: 600;
+    text-decoration: none
+}
+
+.comparison-table .comparison-item .comparison-item-title:hover {
+    text-decoration: underline
+}
+
+.comparison-table .comparison-item .btn {
+    margin: 0
+}
+
+.comparison-table .comparison-item .remove-item {
+    display: block;
+    position: absolute;
+    top: -.3125rem;
+    right: -.3125rem;
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 50%;
+    background-color: #f44336;
+    color: black;
+    text-align: center;
+    cursor: pointer
+}
+
+.comparison-table .comparison-item .remove-item .feather {
+    width: .875rem;
+    height: .875rem
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid black;
+}
+
+.bg-secondary {
+    background-color: lightgreen !important;
+}
+
+.navbar{
+  margin-bottom:50px;
+  background: #1A1A1A;
+}
+.navbar-brand {
+  color:lightgreen;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color:lightgreen;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
+}
+.nav-link:hover {
+  color:green;
+}
+.navbar-brand:hover{
+  color:green;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-link {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+/* footer css */
+
+footer {
+    background: #3e8e41;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+  margin-top:50px;
+}
+
+#footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.social-icons a {
+  color: #333333;
+  font-size: 24px;
+  margin-right: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: white;
+}
+
+#footer p {
+  margin: 0;
+  font-size: 18px;
+  color: #333333;
+}
+
+@media screen and (max-width: 768px) {
+  /* adjust layout for smaller screens */
+  #footer h1 {
+    font-size: 36px;
+  }
+
+  #footer h2 {
+    font-size: 20px;
+  }
+
+  /* form.ev {
+    margin: 20px 15px;
+    max-width: 400px;
+  }
+ */
+  /* adjust button styles */
+  #footer button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  /* adjust footer styles */
+  .social-icons {
+    margin-bottom: 20px;
+  }
+
+  #footer p {
+    font-size: 16px;
+  }
+}
+    </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg ">
+      <a class="navbar-brand" href="/">EV Dekho</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span style='color:white;background-image: url("https://www.clipartmax.com/png/full/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png");' class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul style="margin-right: 30px;" class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/evdb">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/requirements">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/calculator">Calculate Savings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </header>
+
+<div class="container pb-5 mb-2">
+<div class="comparison-table">
+<table class="table table-bordered">
+<thead class="bg-secondary">
+<tr>
+<td class="align-middle">
+<select class="form-control custom-select" id="compare-criteria" data-filter="trigger">
+<option value="all">Comparison criteria *</option>
+<option value="summary">Summary</option>
+<option value="performance">performance</option>
+<option value="height">Height, Weight, Length</option>
+<option value="warranty">Manufacturer Warranty</option>
+<option value="features">Other Features</option>
+</select><small class="form-text text-muted">* Choose criteria to filter table below.</small>
+<div class="pt-3">
+<!-- <div class="custom-control custom-checkbox">
+<input class="custom-control-input" type="checkbox" id="differences">
+<label class="custom-control-label" for="differences">Show differences only</label>
+</div> -->
+</div>
+</td>
+<% vehicle_data.forEach(function(item){  %>
+<td>
+
+<div class="comparison-item">
+<a style="margin-bottom:0;" class="comparison-item-thumb" href="/requirements"><img src="<%=item.main_photo%>" alt="vehicle"></a><a style="margin-bottom:0;" class="comparison-item-title" href="/requirements"><%= item.vehicle %></a>
+
+</div>
+</td>
+<% }) %>
+</tr>
+</thead>
+<tbody id="summary" data-filter="target">
+<tr>
+  <th><span class="text-dark font-weight-semibold">Vehicle</span></th>
+  <% vehicle_data.forEach(function(item){  %>
+  <th><span class="text-dark font-weight-semibold"><%= item.vehicle %></span></th>
+  <% }) %>
+</tr>
+<tr>
+  <td>Company</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.company %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Price</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.price %></td>
+  <% }) %>
+</tr>
+</tbody>
+<tbody id="performance" data-filter="target">
+<tr>
+  <td>Max Power</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Max_Power %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Rated Power</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Rated_Power %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Max Torque</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Max_Torque %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Battery Capacity</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Battery_capacity %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Charge Consumption</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.charge_consumption %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Battery Type</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Battery_type %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Number of Batteries</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.No_of_Batteries %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Range</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.range %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Speed</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.speed %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Acceleration 0 to 60</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Acceleration_0_to_60 %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Battery Charging Time</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Battery_charging_time %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Fast Charging</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Fast_charging %></td>
+  <% }) %>
+</tr>
+<tr>
+  <td>Riding Modes</td>
+  <% vehicle_data.forEach(function(item){  %>
+  <td><%= item.Riding_Modes %></td>
+  <% }) %>
+</tr>
+<tr>
+<td>Transmission</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Transmission %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Motor Type</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Motor_type %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Portable Battery</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Portable_Battery %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Swappable Battery</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Swappable_Battery %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Charger Type</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Charger_Type %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Carrying Capacity</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Carrying_capacity %></td>
+<% }) %>
+</tr>
+</tbody>
+<tbody id="height" data-filter="target">
+<tr>
+<td>Overall Width (mm)</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Overall_Width %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Overall Height (mm)</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Overall_Height %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Kerb Weight (kg)</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Kerb_Weight %></td>
+<% }) %>
+</tr>
+<tbody>
+  <tbody id="warranty" data-filter="target">
+<tr>
+<td>Battery Warranty</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Battery_warranty %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Motor Warranty</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Motor_warranty %></td>
+<% }) %>
+</tr>
+</tbody>
+<tbody id="features" data-filter="target">
+<tr>
+<td>Connectivity</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Connectivity %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Navigation</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Navigation %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Operating System</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Operating_System %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Processor</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Processor %></td>
+<% }) %>
+</tr>
+<tr>
+<td>Mobile Application</td>
+<% vehicle_data.forEach(function(item){  %>
+<td><%= item.Mobile_Application %></td>
+<% }) %>
+</tr>
+
+    <tr>
+      <td>Other Features</td>
+      <% vehicle_data.forEach(function(item){  %>
+      <td><%= item.other_features %></td>
+      <% }) %>
+    </tr>
+
+    <tr>
+      <td>Colors</td>
+      <% vehicle_data.forEach(function(item){  %>
+      <td><%= item.colors %></td>
+      <% }) %>
+    </tr>
+</tbody>
+
+</table>
+</div>
+</div>
+
+<footer id="footer">
+<div class="container">
+  <div class="social-icons">
+    <a href="https://in.linkedin.com/in/sammed-jain-663572203"><i class="fab fa-linkedin fa-lg"></i></a>
+    <a href="https://github.com/sammedcjain"><i class="fab fa-github fa-lg"></i></a>
+    <a href="https://www.instagram.com/sammysammed/"><i class="fab fa-instagram fa-lg"></i></a>
+    <a href="https://twitter.com/sammysammed"><i class="fab fa-twitter fa-lg"></i></a>
+  </div>
+  <p>@sammysammed - EV Dekho</p>
+</div>
+</footer>
+
+<script src="https://kit.fontawesome.com/1465e7da9e.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+$('[data-filter="trigger"]').on("change", function() {
+    var t = $(this).find("option:selected").val().toLowerCase();
+
+	$('[data-filter="target"]').css("display", "none");
+	$("#" + t).css("display", "table-row-group");
+	if(t == "all") {
+		$('[data-filter="target"]').css("display", "table-row-group")
+	}
+	$(this).css("display", "block");
+});
+})
+</script>
+</body>
+</html>

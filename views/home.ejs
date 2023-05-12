@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>EV Dekho</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      color: lightgreen;
+      font-size: 70px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .col-md-4 {
+      flex-basis: 33.33%;
+      max-width: 33.33%;
+      padding: 10px;
+    }
+
+    .card {
+      background-color: #222;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-title {
+      text-align:center;
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: lightgreen;
+    }
+
+    .card-description {
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .card-link {
+      text-align:center;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: lightgreen;
+      color:black;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .card-link:hover {
+      background-color: #4CAF50;
+      color:black;
+    }
+
+    .recent-vehicles {
+      margin-top: 5px;
+    }
+
+    .recent-vehicles h2 {
+      margin-bottom: 20px;
+      color: lightgreen;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .vehicle-card {
+      background-color: #222;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .vehicle-card:hover {
+      transform: scale(1.05);
+    }
+
+    .vehicle-card img {
+      width: 80px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .vehicle-name {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    @media (max-width: 1200px) {
+      .col-md-4 {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .col-md-4 {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+
+      .card,
+      .vehicle-card {
+        padding: 10px;
+      }
+
+      .card-title {
+        font-size: 20px;
+      }
+
+      .recent-vehicles .vehicle-card img {
+        width: 60px;
+      }
+    }
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .card,
+  .vehicle-card {
+    padding: 10px;
+
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .recent-vehicles .vehicle-card img {
+    width: 60px;
+  }
+}
+
+/* Additional Styling */
+
+.recent-vehicles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recent-vehicles .vehicle-card {
+  flex-basis: 200px;
+  max-width: 200px;
+  margin: 10px;
+}
+
+.recent-vehicles .vehicle-card:hover {
+  transform: scale(1.05);
+}
+
+.recent-vehicles .vehicle-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.recent-vehicles .vehicle-name {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.redirect{
+  min-height:280px;
+}
+
+.history_heading{
+  margin-top:30px;
+  color:lightgreen;
+  text-align:center;
+}
+
+/* additional styles */
+
+  .recent-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+  }
+
+  .recent {
+    max-width: 300px;
+    min-height: 247px;
+    background-color: #222;
+    color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+    flex-basis: calc(25% - 20px);
+    flex-grow: 1;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+
+  .recent:hover {
+    transform: scale(1.05);
+  }
+
+  .recent img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .recent p {
+    margin-bottom: 10px;
+  }
+
+  .recent a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: lightgreen;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .recent a:hover {
+    background-color: #4CAF50;
+  }
+
+  @media screen and (max-width: 992px) {
+    .card {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .card {
+      flex-basis: calc(100% - 20px);
+    }
+  }
+
+
+  .navbar{
+    background: #1A1A1A;
+  }
+  .navbar-brand {
+    color:lightgreen;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .nav-link {
+    color:lightgreen;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 1.5rem;
+  }
+  .nav-link:hover {
+    color:green;
+  }
+  .navbar-brand:hover{
+    color:green;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-link {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+
+  /* footer css */
+
+  footer {
+      background: #3e8e41;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+  }
+
+  #footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .social-icons a {
+    color: #333333;
+    font-size: 24px;
+    margin-right: 10px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .social-icons a:hover {
+    color: white;
+  }
+
+  #footer p {
+    margin: 0;
+    font-size: 18px;
+    color: #333333;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* adjust layout for smaller screens */
+    #footer h1 {
+      font-size: 36px;
+    }
+
+    #footer h2 {
+      font-size: 20px;
+    }
+
+    /* form.ev {
+      margin: 20px 15px;
+      max-width: 400px;
+    }
+   */
+    /* adjust button styles */
+    #footer button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    /* adjust footer styles */
+    .social-icons {
+      margin-bottom: 20px;
+    }
+
+    #footer p {
+      font-size: 16px;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+  <header>
+		<nav class="navbar navbar-expand-lg ">
+			<a class="navbar-brand" href="/">EV Dekho</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span style='color:white;background-image: url("https://www.clipartmax.com/png/full/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png");' class="navbar-toggler-icon"></span>
+		  	</button>
+		  	<div class="collapse navbar-collapse" id="navbarNav">
+		    	<ul style="margin-right: 30px;" class="navbar-nav ml-auto">
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="/requirements">Explore</a>
+		      		</li>
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="/calculator">Calculate Savings</a>
+		      		</li>
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="/compare">Compare</a>
+		      		</li>
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="/logout">Logout</a>
+		      		</li>
+		    	</ul>
+		  	</div>
+		</nav>
+	</header>
+
+  <h1 style="margin-bottom:35px">EV Dekho</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card redirect">
+          <h2 class="card-title">Explore Electric Vehicles</h2>
+          <p class="card-description">Discover a wide variety of electric vehicles along with it's specifications like speed, range, power & more. Choose the perfect electric vehicle that perfectly aligns with your requirements and preferences.</p>
+          <a href="/requirements" class="card-link">Explore</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card redirect">
+          <h2 class="card-title">Calculate Savings</h2>
+          <p class="card-description">Calculate how much money you can save by shifting to an electric vehicle. Estimate the cost savings on fuel and maintenance. Additionally, calculate the reduction in carbon emissions by using electric vehicles.</p>
+          <a href="/calculator" class="card-link">Calculate</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card redirect">
+          <h2 class="card-title">Compare Electric Vehicles</h2>
+          <p class="card-description">Compare various specifications of two or more electric vehicles side by side and make an informed decision by analyzing key features, performance, range, and more.</p>
+          <br><a href="/compare" class="card-link">Compare</a>
+        </div>
+      </div>
+    </div>
+<%if(recent_vehicles.length!=0){%>
+  <h2 style="font-size:45px;" class="history_heading">Recently Viewed Vehicles</h2> <br>
+
+  <div class="recent-container " >
+
+    <% recent_vehicles.forEach(function(item, index) { %>
+      <div class="recent" style="height:300px;text-align:center">
+        <div style="vertical-align:center;height:50%;"> <img style="height: 100%;max-width: 100%;object-fit: contain;margin-bottom: 10px;" src="<%= vehicle_data[index].main_photo %>" alt="">
+        </div>
+        <div style="margin-top:30px;text-align:center;">
+        <p style="font-size:25px;"><%= item %></p>
+        <a style="margin-bottom:5px;color:black;"href="/requirements">More...</a>
+          </div>
+
+      </div>
+    <% }) }%>
+
+  </div>
+  <% if(user_count>0){%>
+  <div style="margin-bottom:20px;" class="users_count">
+    <h2 style="font-size:45px;" class="history_heading">Total No. of Users = <%= user_count%></h2>
+  </div>
+  <%}%>
+  </div>
+
+  <footer id="footer">
+  <div class="container">
+    <div class="social-icons">
+      <a href="https://in.linkedin.com/in/sammed-jain-663572203"><i class="fab fa-linkedin fa-lg"></i></a>
+      <a href="https://github.com/sammedcjain"><i class="fab fa-github fa-lg"></i></a>
+      <a href="https://www.instagram.com/sammysammed/"><i class="fab fa-instagram fa-lg"></i></a>
+      <a href="https://twitter.com/sammysammed"><i class="fab fa-twitter fa-lg"></i></a>
+    </div>
+    <p>@sammysammed - EV Dekho</p>
+  </div>
+  </footer>
+  <script src="https://kit.fontawesome.com/1465e7da9e.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

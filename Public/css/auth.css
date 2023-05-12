@@ -1,13 +1,13 @@
 /* Global styles */
 body {
-  background-color: #f2f2f2;
+  background-color: black;
   font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
   font-size: 48px;
   font-weight: 800;
-  color: #333;
+  color: lightgreen;
   text-align: center;
   margin-top: 50px;
 }
@@ -15,7 +15,7 @@ h1 {
 h2 {
   font-size: 24px;
   font-weight: 600;
-  color: #333;
+  color: lightgreen;
   text-align: center;
   margin-top: 30px;
 }
@@ -36,7 +36,7 @@ h2 {
   padding: 10px;
   margin-bottom: 20px;
   border: none;
-  background-color: #f2f2f2;
+  background-color: #E7FBE7;
   border-radius: 4px;
   font-size: 16px;
   color: #333;

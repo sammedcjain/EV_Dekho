@@ -3,19 +3,142 @@
   <head>
     <meta charset="utf-8">
     <title>Admin</title>
-    <link rel="stylesheet" href="css/admin.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: lightgreen;
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      form {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #111;
+        border-radius: 5px;
+        margin-top: 30px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select {
+        margin-bottom:25px;
+        width: 100%;
+        padding: 5px;
+        border-radius: 3px;
+        border: none;
+        background-color: #222;
+        color: #fff;
+      }
+
+      input[type="submit"],
+      button {
+        padding: 10px 20px;
+        background-color: lightgreen;
+        color: black;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      input[type="submit"]:hover,
+      button:hover {
+        background-color: #4CAF50;
+      }
+
+      option[disabled] {
+        color: #888;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        margin-bottom: 5px;
+      }
+
+      .form-group .input-group {
+        display: flex;
+      }
+
+      .form-group .input-group-addon {
+        background-color: #222;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: none;
+      }
+
+      @media (max-width: 768px) {
+        form {
+          padding: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
     <h1>Evolve 2.0</h1>
     <h2>Admin access granted !</h2>
     <h3>Add elements to database:</h3>
-    <form action="/dbupdate" method="post">
-      <label for="company">Company : </label><input type="text" name="company" > <br><br>
-      <label for="vehicle">Vehicle : </label><input type="text" name="vehicle" > <br><br>
-      <label for="price">Price : </label><input type="number" name="price" > <br><br>
-      <label for="range">range : </label><input type="number" name="range" > <br><br>
-      <label for="speed">speed : </label><input type="number" name="speed" > <br><br>
-      <button type="submit" name="sumbit">Add</button>
+    <form action="/dbupdate" method="post" id="addForm">
+      <label for="vehicle_id">Vehicle Id (Number): </label><input class="numberCheck" type="number" id="vehicle_id" name="vehicle_id" > <br>
+      <label for="company">Company (String): </label><input type="text" id="company" name="company" > <br>
+      <label for="vehicle">Vehicle (String): </label><input type="text" id="vehicle" name="vehicle" ><br>
+      <label for="price">Price (Number): </label><input class="numberCheck" type="number" id="price" name="price" > <br>
+      <label for="Max_Power">Max Power (Number) : </label><input placeholder="in W (Watts)" id="Max_Power" type="number" name="Max_Power" ><br>
+<label for="Rated_Power">Rated Power (Number) : </label><input type="number" id="Rated_Power" name="Rated_Power" placeholder="in W (Watts)"> <br>
+<label for="Max_Torque">Max Torque (Number) : </label><input type="number" id="Max_Torque" name="Max_Torque" placeholder="in Nm"><br>
+<label for="Battery_capacity">Battery Capacity (Number) : </label><input id="Battery_capacity" type="number" name="Battery_capacity" placeholder="in kWh"> <br>
+<label for="charge_consumption">Charge Consumption (Number) : </label><input id="charge_consumption" type="number" name="charge_consumption" placeholder="in kWh/100km"> <br>
+<label for="Battery_type">Battery Type (String): </label><input type="text" id="Battery_type" name="Battery_type" ><br>
+<label for="No_of_Batteries">Number of Batteries (Number): </label><input id="No_of_Batteries" type="number" name="No_of_Batteries" ><br>
+<label for="range">Range (Number): </label><input type="number" id="range" name="range" placeholder="in kms"> <br>
+<label for="speed">Speed (Number) : </label><input type="number" id="speed" name="speed" placeholder="in km/hr"> <br>
+<label for="Acceleration_0_to_60">Acceleration 0 to 60 (Number): </label><input id="Acceleration_0_to_60" type="number" name="Acceleration_0_to_60" placeholder="in secs"> <br>
+<label for="Battery_charging_time">Battery Charging Time (Number): </label><input id="Battery_charging_time" type="number" name="Battery_charging_time" placeholder="in hrs"><br>
+<label for="Fast_charging">Fast Charging (String): </label><input id="Fast_charging" type="text" name="Fast_charging" ><br>
+<label for="Riding_Modes">Riding Modes (String): </label><input id="Riding_Modes" type="text" name="Riding_Modes" ><br>
+<label for="Transmission">Transmission (String): </label><input id="Transmission" type="text" name="Transmission" ><br>
+<label for="Motor_type">Motor Type (String): </label><input id="Motor_type" type="text" name="Motor_type" ><br>
+<label for="Portable_Battery">Portable Battery (String): </label><input id="Portable_Battery" type="text" name="Portable_Battery" ><br>
+<label for="Swappable_Battery">Swappable Battery (String): </label><input id="Swappable_Battery" type="text" name="Swappable_Battery" ><br>
+<label for="Charger_Type">Charger Type (String): </label><input type="text" id="Charger_Type" name="Charger_Type" ><br>
+<label for="Carrying_capacity">Carrying Capacity (Number) : </label><input id="Carrying_capacity" type="number" name="Carrying_capacity" placeholder="in kgs"> <br>
+<label for="Overall_Width">Overall Width (Number) : </label><input id="No_of_Batteries" type="number" name="Overall_Width" placeholder="in mm"> <br>
+<label for="Overall_Height">Overall Height (Number) : </label><input type="number" id="Overall_Height" name="Overall_Height" placeholder="in mm"><br>
+<label for="Kerb_Weight">Kerb Weight (Number) : </label><input type="number" id="Kerb_Weight" name="Kerb_Weight" placeholder="in kgs"> <br>
+<label for="Battery_warranty">Battery Warranty (String) : </label><input type="text" id="Battery_warranty"  name="Battery_warranty" ><br>
+<label for="Motor_warranty">Motor Warranty (String) : </label><input type="text" id="Motor_warranty" name="Motor_warranty" ><br>
+<label for="Connectivity">Connectivity (String): </label><input type="text" id="Connectivity" name="Connectivity" ><br>
+<label for="Navigation">Navigation (String): </label><input type="text" id="Navigation" name="Navigation" ><br>
+<label for="Operating_System">Operating System (String): </label><input type="text" id="Operating_System" name="Operating_System" ><br>
+<label for="Processor">Processor (String): </label><input type="text" id="Processor" name="Processor" ><br>
+<label for="Mobile_Application">Mobile Application (String): </label><input type="text" id="Mobile_Application" name="Mobile_Application" ><br>
+<label for="other_features">Other Features (String): </label><input type="text" id="other_features" name="other_features" ><br>
+<label for="colors">Colors (String): </label><input id="colors" type="text" name="colors" ><br>
+<label for="main_photo">Main Photo Link (String): </label><input id="main_photo" type="text" name="main_photo" ><br>
+<label for="photo1">Photo 2 Link (String): </label><input id="photo1" type="text" name="photo1" ><br>
+<label for="photo2">Photo 3 Link (String): </label><input id="photo2" type="text" name="photo2" ><br>
+<label for="company_link">Company Link (String): </label><input id="company_link" type="text" name="company_link" ><br>
+<label for="reviews">Review Link (String): </label><input id="reviews" type="text" name="reviews" ><br>
+<button type="submit" name="sumbit">Add</button>
     </form>
     <br><br>
     <h2>Delete entries from database by giving vehicle name:</h2>
@@ -23,6 +146,64 @@
       <label for="vehicle_del">Vehicle Name : </label> <input type="text" name="vehicle_del">
       <button type="submit" name="button">Delete</button>
     </form>
+
+    <h3>Update elements by giving vehicle name and the updated entry...</h3>
+    <form class="update" action="/db_update" method="post">
+      <label for="vehicle">vehicle name (String) : </label><input type="text" name="vehicle" value=""> <br>
+
+      <select name="to_update">
+        <option value="" disabled selected>Select an option to be updated</option>
+  <option name="vehicle_id" value="vehicle_id">vehicle_id (Number)</option>
+  <option name="company" value="company">company (String)</option>
+  <option name="vehicle" value="vehicle">vehicle (String)</option>
+  <option name="price" value="price">price (Number)</option>
+  <option name="Max_Power" value="Max_Power">Max_Power (Number)</option>
+  <option name="Rated_Power" value="Rated_Power">Rated_Power (Number)</option>
+  <option name="Max_Torque" value="Max_Torque">Max_Torque (Number)</option>
+  <option name="Battery_capacity" value="Battery_capacity">Battery_capacity (Number)</option>
+  <option name="charge_consumption" value="charge_consumption">charge_consumption (Number)</option>
+  <option name="Battery_type" value="Battery_type">Battery_type (String)</option>
+  <option name="No_of_Batteries" value="No_of_Batteries">No_of_Batteries (Number)</option>
+  <option name="range" value="range">range (Number)</option>
+  <option name="speed" value="speed">speed (Number)</option>
+  <option name="Acceleration_0_to_60" value="Acceleration_0_to_60">Acceleration_0_to_60 (Number)</option>
+  <option name="Battery_charging_time" value="Battery_charging_time">Battery_charging_time (Number)</option>
+  <option name="Fast_charging" value="Fast_charging">Fast_charging (String)</option>
+  <option name="Riding_Modes" value="Riding_Modes">Riding_Modes (String)</option>
+  <option name="Transmission" value="Transmission">Transmission (String)</option>
+  <option name="Motor_type" value="Motor_type">Motor_type (String)</option>
+  <option name="Portable_Battery" value="Portable_Battery">Portable_Battery (String)</option>
+  <option name="Swappable_Battery" value="Swappable_Battery">Swappable_Battery (String)</option>
+  <option name="Charger_Type" value="Charger_Type">Charger_Type (String)</option>
+  <option name="Carrying_capacity" value="Carrying_capacity">Carrying_capacity (Number)</option>
+  <option name="Overall_Width" value="Overall_Width">Overall_Width (Number)</option>
+  <option name="Overall_Height" value="Overall_Height">Overall_Height (Number)</option>
+  <option name="Kerb_Weight" value="Kerb_Weight">Kerb_Weight (Number)</option>
+  <option name="Battery_warranty" value="Battery_warranty">Battery_warranty (String)</option>
+  <option name="Motor_warranty" value="Motor_warranty">Motor_warranty (String)</option>
+  <option name="Connectivity" value="Connectivity">Connectivity (String)</option>
+  <option name="Navigation" value="Navigation">Navigation (String)</option>
+  <option name="Operating_System" value="Operating_System">Operating_System (String)</option>
+  <option name="Processor" value="Processor">Processor (String)</option>
+  <option name="Mobile_Application" value="Mobile_Application">Mobile_Application (String)</option>
+  <option name="other_features" value="other_features">other_features (String) </option>
+  <option name="colors" value="colors">Colors (String) </option>
+<option name="main_photo" value="main_photo">Main Photo Link (String)</option>
+<option name="photo1" value="photo1">Photo 2 link (String) </option>
+<option name="photo2" value="photo2">Photo 3 link (String) </option>
+<option name="company_link" value="company_link">Company link (String) </option>
+<option name="reviews" value="reviews">Review link (String) </option>
+
+      </select>
+    <label for="updated text">Enter the data to be updated = </label> <input type="text" name="update_data" >
+    <button type="submit" name="update_submit">Update</button>
+    </form>
+
+    <footer style="margin:75px auto;">
+    <div class="container text-center">
+    <p>© 2023 EV Dekho. All rights reserved.</p>
+    </div>
+    </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/admin.js"></script>
   </body>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <style>
+
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: lightgreen;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background-color: lightgreen;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #333;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      h3 {
+        text-align: center;
+        color: black;
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+      }
+
+      h3 span {
+        font-weight: bold;
+      }
+
+      h3 br {
+        display: none;
+      }
+
+      h3:nth-child(2) br {
+        display: inline;
+      }
+
+      h3:last-child {
+        margin-bottom: 0;
+      }
+
+      h3:last-child br {
+        display: none;
+      }
+
+      .code {
+        font-family: Consolas, monospace;
+        background-color: #f5f5f5;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+
+      button,
+      a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+      }
+
+      button:hover,
+      a:hover {
+        background-color: #45a049;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .section label {
+        margin-bottom: 10px;
+        font-weight: bold;
+        display: block;
+      }
+
+      .section input[type="number"] {
+        width: 100%;
+        padding: 5px;
+        border-radius: 3px;
+        border: none;
+        background-color: #f5f5f5;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .section select {
+        width: 100%;
+        padding: 5px;
+        border-radius: 3px;
+        border: none;
+        background-color: #f5f5f5;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .circle-sketch-highlight{
+  position:relative;
+}
+.arrow-highlight{
+  position:relative;
+  margin:0 0.5em;
+  padding:0 0.2em;
+}
+.arrow-highlight:before{
+  content:"";
+  z-index:-1;
+  left:-0.5em;
+  top:0.1em;
+  border-width:0.5em;
+  border-style:solid;
+  border-color:#00b300;
+  position:absolute;
+  width:calc(100% - 0.5em);
+  border-left-color:transparent;
+}
+
+.arrow-highlight:after{
+  content:"";
+  z-index:-1;
+  right:0;
+  top:0.1em;
+  border-width:0.5em;
+  border-style:solid;
+  border-color:#00b300;
+  position:absolute;
+  border-top-color:transparent;
+  border-bottom-color:transparent;
+  border-left-color:transparent;
+  transform:rotate(180deg);
+  transform-origin:center right;
+}
+    </style>
+  </head>
+  <body style="background:black;">
+    <div class="container">
+      <h1 style="font-size:70px;color:lightgreen;">Your Savings!</h1>
+      <div class="card">
+
+        <h3>Your spend Rs. <span><%= evcal.petrol_Total %></span> in 1 year for your Petrol/Diesel vehicle</h3>
+        <h3>Whereas with your EV you spend only <span><%= evcal.cpy %></span> per year</h3>
+        <h3><span class="arrow-highlight">Total savings = <span><%= evcal.total %></span> Rs per year</span></h3>
+      </div>
+
+      <div class="card">
+        <h3>Your <%= evcal.vehicle %> vehicle emits a total of <span><%= evcal.fcarbon.toFixed(2) %></span> kgs of CO2 per year</h3>
+        <h3>Carbon footprint of your EV vehicle = <span><%= evcal.ecarbon.toFixed(2) %></span> kgs per year in India</h3>
+        <h3> Therefore, you'll reduce your carbon footprint by <span class="arrow-highlight"><%= evcal.carbon.toFixed(2) %> kgs </span>if you switch to EV</h3>
+      </div>
+    </div>
+    <script>
+      // JavaScript code goes here
+      window.addEventListener('DOMContentLoaded', function () {
+        var partySplash = document.createElement('div');
+        partySplash.classList.add('party-splash');
+        document.body.appendChild(partySplash);
+
+        setTimeout(function () {
+          document.body.removeChild(partySplash);
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>

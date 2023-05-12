@@ -4,10 +4,37 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Evolve</title>
-    <link rel="stylesheet" href="css\index.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
-    <h1>Evolve 2.0</h1>
+
+    <header>
+  		<nav class="navbar navbar-expand-lg ">
+  			<a class="navbar-brand" href="/">EV Dekho</a>
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  		    	<span style='color:white;background-image: url("https://www.clipartmax.com/png/full/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png");' class="navbar-toggler-icon"></span>
+  		  	</button>
+  		  	<div class="collapse navbar-collapse" id="navbarNav">
+  		    	<ul style="margin-right: 30px;" class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/evdb">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/calculator">Calculate Savings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/compare">Compare</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+  		    	</ul>
+  		  	</div>
+  		</nav>
+  	</header>
+
+    <h1>EV Dekho</h1>
 
     <h2>Please select your requirements: </h2>
     <form class="ev" action="/data" method="post">
@@ -52,16 +79,14 @@
     <button type="submit" name="ev" value="ev" >Search</button>
     <button type="submit" name="showall" value="showall">Show All</button>
   </form>
-  <form class="admin" action="/authentication" method="post">
-    <button type="submit" name="authentication">Admin Access</button>
-  </form>
+
   <footer>
 <div class="container">
   <div class="social-icons">
-    <a href="https://in.linkedin.com/in/sammed-jain-663572203"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/sammedcjain"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/sammysammed/"><i class="fab fa-instagram"></i></a>
-    <a href="https://twitter.com/sammysammed"><i class="fab fa-twitter"></i></a>
+    <a href="https://in.linkedin.com/in/sammed-jain-663572203"><i class="fab fa-linkedin fa-lg"></i></a>
+    <a href="https://github.com/sammedcjain"><i class="fab fa-github fa-lg"></i></a>
+    <a href="https://www.instagram.com/sammysammed/"><i class="fab fa-instagram fa-lg"></i></a>
+    <a href="https://twitter.com/sammysammed"><i class="fab fa-twitter fa-lg"></i></a>
   </div>
   <p>@sammysammed</p>
 </div>

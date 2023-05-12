@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>EV Dekho</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+    <style>
+    /* Global Styles */
+body {
+background-color: black;
+color: white;
+font-family: 'Poppins', sans-serif;
+text-align: center;
+margin: 0;
+padding: 0;
+}
+
+/* Heading Styles */
+h1, h2 {
+color: lightgreen;
+font-size: 28px;
+margin-bottom: 20px;
+}
+
+/* Button Styles */
+button {
+  border-radius: 30px;
+  margin:20px auto;
+background-color: lightgreen;
+color: black;
+border: none;
+padding: 10px 20px;
+font-size: 18px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+button:hover {
+background-color: green;
+}
+
+/* Select Styles */
+select {
+background-color: black;
+color: white;
+border: 1px solid lightgreen;
+padding: 10px;
+font-size: 16px;
+width: 100%;
+max-width: 300px;
+margin: 0 auto;
+margin-bottom: 20px;
+}
+
+/* Form Styles */
+#compare-form {
+padding: 20px;
+max-width: 600px;
+margin: 0 auto;
+}
+/* Hidden Element Styles */
+.hidden {
+display: none;
+}
+
+.navbar{
+  margin-bottom:50px;
+  background: #1A1A1A;
+}
+.navbar-brand {
+  color:lightgreen;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color:lightgreen;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 1.5rem;
+}
+.nav-link:hover {
+  color:green;
+}
+.navbar-brand:hover{
+  color:green;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-link {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
+
+/* footer css */
+
+footer {
+    background: #3e8e41;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+  margin-top:50px;
+}
+
+#footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.social-icons a {
+  color: #333333;
+  font-size: 24px;
+  margin-right: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: white;
+}
+
+#footer p {
+  margin: 0;
+  font-size: 18px;
+  color: #333333;
+}
+
+@media screen and (max-width: 768px) {
+  /* adjust layout for smaller screens */
+  #footer h1 {
+    font-size: 36px;
+  }
+
+  #footer h2 {
+    font-size: 20px;
+  }
+
+  /* form.ev {
+    margin: 20px 15px;
+    max-width: 400px;
+  }
+ */
+  /* adjust button styles */
+  #footer button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  /* adjust footer styles */
+  .social-icons {
+    margin-bottom: 20px;
+  }
+
+  #footer p {
+    font-size: 16px;
+  }
+}
+    </style>
+  <body>
+
+    <header>
+      <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="/">EV Dekho</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span style='color:white;background-image: url("https://www.clipartmax.com/png/full/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png");' class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul style="margin-right: 30px;" class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/evdb">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/requirements">Explore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/calculator">Calculate Savings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </header>
+
+    <h1 style="font-size:60px;">Compare :</h1>
+    <form id="compare-form" method="post">
+
+    <h2> Vehicle 1 = </h2>
+    <select name="compare" id="vehicle1">
+      <option value="" disabled selected>Select an option</option>
+      <% EV_names.forEach(function(item){  %>
+      <option value="<%= item.vehicle %>" name=""><%= item.vehicle %></option>
+      <% }) %>
+    </select>
+<br>
+  <h3>  Vs</h3>
+
+    <h2> Vehicle 2 = </h2>
+    <select name="compare" id="vehicle2">
+      <option value="" disabled selected>Select an option</option>
+      <% EV_names.forEach(function(item){  %>
+      <option value="<%= item.vehicle %>" name=""><%= item.vehicle %></option>
+      <% }) %>
+    </select>
+<br>
+    <button onclick="addv3()" type="button" name="button">add one more vehicle</button>
+<br>
+    <div id="hide" class="hidden">
+    <h3>  Vs</h3>
+    <h2> Vehicle 3 = </h2>
+    <select name="compare" id="vehicle3">
+      <option value="" disabled selected>Select an option</option>
+      <% EV_names.forEach(function(item){  %>
+      <option value="<%= item.vehicle %>" name=""><%= item.vehicle %></option>
+      <% }) %>
+    </select>
+       <br>
+    <button onclick="removev3()" type="button" name="button">remove 3rd vehicle</button>
+     </div>
+
+
+   <button type="submit" name="compare">Compare</button>
+    </form>
+
+    <footer id="footer">
+    <div class="container">
+      <div class="social-icons">
+        <a href="https://in.linkedin.com/in/sammed-jain-663572203"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="https://github.com/sammedcjain"><i class="fab fa-github fa-lg"></i></a>
+        <a href="https://www.instagram.com/sammysammed/"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="https://twitter.com/sammysammed"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
+      <p>@sammysammed - EV Dekho</p>
+    </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/1465e7da9e.js" crossorigin="anonymous"></script>
+<script src="./js/comparision.js" charset="utf-8"></script>
+  </body>
+</html>

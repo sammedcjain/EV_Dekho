@@ -1,32 +1,280 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+  <!DOCTYPE html>
+  <html>
   <head>
-    <meta charset="utf-8">
-    <title>Db Table</title>
-    <link rel="stylesheet" href="css/dbtable1.css">
+    <title>Responsive Card Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body {
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+  }
+
+  .card {
+    max-width: 300px;
+    min-height: 447px;
+    background-color: #222;
+    color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+    flex-basis: calc(25% - 20px);
+    flex-grow: 1;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    margin-bottom: 10px;
+  }
+
+  .card a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: lightgreen;
+    color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .card a:hover {
+    background-color: #4CAF50;
+  }
+
+  @media screen and (max-width: 992px) {
+    .card {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .card {
+      flex-basis: calc(100% - 20px);
+    }
+  }
+
+  .card .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+  }
+
+  .card .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40%;
+  }
+
+  .card .description p {
+    margin: 5px 0;
+  }
+
+h1{
+  text-align: center;
+  color:lightgreen;
+  font-size: 70px;
+}
+h2{
+  text-align: center;
+  color:lightgreen;
+  font-size: 27px;
+}
+
+
+  .navbar{
+    margin-bottom:50px;
+    background: #1A1A1A;
+  }
+  .navbar-brand {
+    color:lightgreen;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .nav-link {
+    color:lightgreen;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 1.5rem;
+  }
+  .nav-link:hover {
+    color:green;
+  }
+  .navbar-brand:hover{
+    color:green;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-link {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+
+  /* footer css */
+
+  footer {
+      background: #3e8e41;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+    margin-top:50px;
+  }
+
+  #footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .social-icons a {
+    color: #333333;
+    font-size: 24px;
+    margin-right: 10px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .social-icons a:hover {
+    color: white;
+  }
+
+  #footer p {
+    margin: 0;
+    font-size: 18px;
+    color: #333333;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* adjust layout for smaller screens */
+    #footer h1 {
+      font-size: 36px;
+    }
+
+    #footer h2 {
+      font-size: 20px;
+    }
+
+    /* form.ev {
+      margin: 20px 15px;
+      max-width: 400px;
+    }
+   */
+    /* adjust button styles */
+    #footer button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    /* adjust footer styles */
+    .social-icons {
+      margin-bottom: 20px;
+    }
+
+    #footer p {
+      font-size: 16px;
+    }
+  }
+    </style>
   </head>
   <body>
-    <h1>Evolve 2.0</h1>
-    <h2>EV vehicles as per your requirement :</h2>
-    <br>
-    <table>
-      <tr>
-        <th>Company</th>
-        <th>Vehicle</th>
-        <th>Price</th>
-        <th>Min Range in kms</th>
-        <th>Speed</th>
-      </tr>
-    <% evdb.forEach(function(item){  %>
+    <header>
+  		<nav class="navbar navbar-expand-lg ">
+  			<a class="navbar-brand" href="/">EV Dekho</a>
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  		    	<span style='color:white;background-image: url("https://www.clipartmax.com/png/full/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png");' class="navbar-toggler-icon"></span>
+  		  	</button>
+  		  	<div class="collapse navbar-collapse" id="navbarNav">
+  		    	<ul style="margin-right: 30px;" class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/evdb">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/calculator">Calculate Savings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/compare">Compare</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+  		    	</ul>
+  		  	</div>
+  		</nav>
+  	</header>
 
-        <tr>
-          <td><%= item.company %></td>
-          <td><%= item.vehicle %></td>
-          <td><%= item.price %></td>
-          <td><%= item.range %></td>
-          <td><%= item.speed %></td>
-        </tr>
-    <%  })  %>
-    </table>
+    <h1>Ev Dekho</h1>
+    <h2>Vehicles as per your requirements :</h2>
+    <div class="card-container">
+      <% evdb.forEach(function(item) { %>
+        <div class="card" style="height:480px;text-align:center">
+          <div style="vertical-align:center;height:50%;"> <img style="height: 100%;max-width: 100%;object-fit: contain;margin-bottom: 10px;" src="<%= item.main_photo%>" alt="">
+          </div>
+          <div style="text-align:center;">
+          <p>Company: <%= item.company %></p>
+          <p>Vehicle: <%= item.vehicle %></p>
+          <p>Price: <%= item.price %> Rs</p>
+          <p>Range: <%= item.range %> Kms</p>
+          <p>Top Speed: <%= item.speed %> Kmph</p>
+          <a style="color:black;"href="/vehicle_info/<%= item.vehicle %>">More...</a>
+            </div>
+
+        </div>
+      <% }) %>
+
+    </div>
+
+    <footer id="footer">
+    <div class="container">
+      <div class="social-icons">
+        <a href="https://in.linkedin.com/in/sammed-jain-663572203"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="https://github.com/sammedcjain"><i class="fab fa-github fa-lg"></i></a>
+        <a href="https://www.instagram.com/sammysammed/"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="https://twitter.com/sammysammed"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
+      <p>@sammysammed - EV Dekho</p>
+    </div>
+    </footer>
+    <script src="./js/dbcard.js" charset="utf-8"></script>
+      <script src="https://kit.fontawesome.com/1465e7da9e.js" crossorigin="anonymous"></script>
   </body>
   </html>

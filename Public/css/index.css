@@ -7,20 +7,55 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: black;
 }
+
+  .navbar{
+    background: #1A1A1A;
+  }
+  .navbar-brand {
+    color:lightgreen;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .nav-link {
+    color:lightgreen;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 1.5rem;
+  }
+  .nav-link:hover {
+    color:green;
+  }
+  .navbar-brand:hover{
+    color:green;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-link {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+
 
 h1 {
   text-align: center;
   margin-top: 50px;
-  font-size: 48px;
-  color: #333;
+  font-size: 70px;
+  color: lightgreen;
 }
 
 h2 {
   text-align: center;
-  font-size: 24px;
-  color: #333;
+  font-size: 26px;
+  color: lightgreen;
   margin-top: 50px;
 }
 

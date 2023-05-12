@@ -1,3 +1,5 @@
 /node_modules
-/*.en
+/*.env
 npm-debug.logv
+npm-debug.log
+.env

@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+<style media="screen">
+  .btn-social {
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+.btn-social:hover,
+.btn-social:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-google {
+  background-color: #dd4b39;
+  border-color: #dd4b39;
+}
+
+.btn-google:hover,
+.btn-google:focus {
+  background-color: #c23321;
+  border-color: #c23321;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/auth.css">
+  </head>
+  <body>
+  <h1>EV DEKHO</h1>
+  <h2>Login to continue:</h2>
+  <form class="ev_auth" action="/login" method="post">
+    Username :<input type="text" name="username" > <br> <br>
+    Password :<input type="password" name="password" > <br> <br>
+    <button type="submit" name="ev-auth" value="ev-auth">Submit</button>
+    <a style="margin-top:20px;" class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
+      <i class="fab fa-google"></i>
+      Sign Up with Google
+    </a>
+  </form>
+  </body>
+</html>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vehicle Info</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style media="screen">
+  details {
+ width: 50%;
+ margin: 0 auto;
+ background: #282828;
+ margin-bottom: 0.5rem;
+ box-shadow: 0 0.1rem 1rem -0.5rem rgba(0, 0, 0, .4);
+ border-radius: 5px;
+ overflow: hidden;
+}
+summary {
+  color:lightgreen;
+ padding: 1rem;
+ display: block;
+ background: #333;
+ padding-left: 2.2rem;
+ position: relative;
+ cursor: pointer;
+}
+summary:before {
+ content: '';
+ border-width: 0.4rem;
+ border-style: solid;
+ border-color: transparent transparent transparent #fff;
+ position: absolute;
+ top: 1.3rem;
+ left: 1rem;
+ transform: rotate(0);
+ transform-origin: 0.2rem 50%;
+ transition: 0.25s transform ease;
+}
+/* THE MAGIC 🧙‍♀️ */
+details[open] > summary:before {
+ transform: rotate(90deg);
+}
+details summary::-webkit-details-marker {
+ display: none;
+}
+details > ul {
+  margin-top:1rem;
+ padding-bottom: 1rem;
+ margin-bottom: 0;
+}
+body {
+ background: #222;
+ height: 100vh;
+ font-family: sans-serif;
+ color: white;
+ line-height: 1.5;
+ letter-spacing: 1px;
+ margin-top: 0;
+}
+button {
+  background-color: lightgreen;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 50%;
+}
+
+button:hover {
+  background-color: green;
+}
+  /* Custom styles for owl carousel */
+  .owl-carousel .owl-dots .owl-dot {
+    background: lightgreen;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+  }
+
+  .owl-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
+  .owl-carousel .owl-nav button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    color: #000;
+    transition: all 0.3s ease;
+  }
+
+  .owl-carousel .owl-nav button.owl-prev {
+    left: 10px;
+  }
+
+  .owl-carousel .owl-nav button.owl-next {
+    right: 10px;
+  }
+
+  .owl-carousel .owl-nav button:focus {
+    outline: none;
+  }
+
+  .owl-carousel .owl-nav button:hover {
+    color: lightgreen;
+  }
+  .owl-carousel .owl-nav  button:hover {
+    color: lightgreen;
+  }
+
+  /* Custom styles for owl carousel */
+  .owl-carousel .owl-item .work {
+    height: 400px; /* Adjust the height as desired */
+  }
+
+  .owl-carousel .owl-item img {
+    max-height: 100%;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .owl-carousel .owl-item .work {
+      height: 250px; /* Adjust the height as desired for smaller screens */
+    }
+  }
+  .owl-dot {
+    color: lightgreen;
+  }
+  .owl-dot.active > span {
+   color: lightgreen ;
+ }
+
+ .navbar{
+   margin-bottom:50px;
+   background: #1A1A1A;
+ }
+ .navbar-brand {
+   color:lightgreen;
+   font-weight: bold;
+   font-size: 2rem;
+ }
+
+ .nav-link {
+   color:lightgreen;
+   font-weight: bold;
+   font-size: 1.2rem;
+   margin-left: 1.5rem;
+ }
+ .nav-link:hover {
+   color:green;
+ }
+ .navbar-brand:hover{
+   color:green;
+ }
+
+ @media (max-width: 768px) {
+   .navbar-nav {
+     flex-direction: column;
+     align-items: center;
+   }
+
+   .nav-link {
+     margin-left: 0;
+     margin-top: 1rem;
+   }
+ }
+
+ /* footer css */
+
+ footer {
+     background: #3e8e41;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 60px 0;
+   margin-top:50px;
+ }
+
+ #footer .container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ .social-icons {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 30px;
+ }
+
+ .social-icons a {
+   color: #333333;
+   font-size: 24px;
+   margin-right: 10px;
+   transition: color 0.3s ease-in-out;
+ }
+
+ .social-icons a:hover {
+   color: white;
+ }
+
+ #footer p {
+   margin: 0;
+   font-size: 18px;
+   color: #333333;
+ }
+
+ @media screen and (max-width: 768px) {
+   /* adjust layout for smaller screens */
+   #footer h1 {
+     font-size: 36px;
+   }
+
+   #footer h2 {
+     font-size: 20px;
+   }
+
+   /* form.ev {
+     margin: 20px 15px;
+     max-width: 400px;
+   }
+  */
+   /* adjust button styles */
+   #footer button {
+     padding: 8px 16px;
+     font-size: 14px;
+   }
+
+   /* adjust footer styles */
+   .social-icons {
+     margin-bottom: 20px;
+   }
+
+   #footer p {
+     font-size: 16px;
+   }
+ }
+</style>
+
+</head>
+<body >
+
+  <header>
+    <nav class="navbar navbar-expand-lg ">
+      <a class="navbar-brand" href="/">EV Dekho</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span style='color:white;background-image: url("https://www.clipartmax.com/png/full/36-365828_navbar-toggle-icon-menu-hamburger-png-white.png");' class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul style="margin-right: 30px;" class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/evdb">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/calculator">Calculate Savings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/compare">Compare</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </header>
+
+  <% ev_info.forEach(function(item){  %>
+    <h1 style="text-align:center;color:lightgreen">Company : <%= item.company %> <br>Vehicle : <%= item.vehicle %> </h1>
+
+    <section style="padding-top:20px;padding-bottom:20px;" class="ftco-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <!-- <h2 class="heading-section mb-5 pb-md-4">Carousel #09</h2> -->
+      </div>
+      <div class="col-md-12">
+        <div class="hero featured-carousel owl-carousel">
+          <div class="item">
+            <div class="work">
+              <img class="img-responsive" src="<%=item.main_photo%>"  alt="Image 1">
+            </div>
+          </div>
+          <div class="item">
+            <div class="work">
+              <img class="img-responsive" src="<%=item.photo1%>" alt="Image 2">
+            </div>
+          </div>
+          <div class="item">
+            <div class="work">
+              <img class="img-responsive" src="<%=item.photo2%>" alt="Image 3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <details>
+    <summary>Vehicle Summary:</summary>
+    <ul>
+      <li>Range : <%= item.range %> Km/charge</li>
+      <li>Battery Capacity : <%= item.Battery_capacity %> kWh</li>
+      <li>Battery charging time = <%= item.Battery_charging_time %> Hrs</li>
+      <li>Top Speed = <%= item.speed.toLocaleString() %> Kmph </li>
+      <% if(item.Acceleration_0_to_60) { %>
+      <li>Acceleration (0-60 kmph) = <%= item.Acceleration_0_to_60.toLocaleString() %> secs</li>
+      <% }%>
+      <% if(item.Kerb_Weight) { %>
+      <li>Kerb Weight	= <%= item.Kerb_Weight.toLocaleString() %> kg </li>
+      <% }%>
+      <li>Motor Power = <%= item.Max_Power.toLocaleString() %> W </li>
+      <li>Motor = <%= item.Motor_type %> </li>
+    </ul>
+</details>
+<details>
+<summary>Power & Performance</summary>
+
+  <ul>
+    <li>Max Power: <%= item.Max_Power.toLocaleString() %> W</li>
+    <li>Rated Power: <%= item.Rated_Power.toLocaleString() %> W</li>
+    <li>Max Torque: <%= item.Max_Torque.toLocaleString() %> Nm</li>
+    <li>Battery capacity: <%= item.Battery_capacity.toLocaleString() %> kWh</li>
+    <li>Battery type: <%= item.Battery_type %></li>
+    <li>No. of Batteries: <%= item.No_of_Batteries %></li>
+    <li>Riding Range: <%= item.range.toLocaleString() %> Km / charge</li>
+    <li>Top Speed: <%= item.speed.toLocaleString() %> Kmph</li>
+    <li>Acceleration(0-60): <%= item.Acceleration_0_to_60.toLocaleString() %> secs</li>
+    <li>Battery charging time: <%= item.Battery_charging_time.toLocaleString() %> Hrs</li>
+    <li>Fast charging time: <%= item.Fast_charging %></li>
+    <li>Riding Modes: <%= item.Riding_Modes %></li>
+    <li>Transmission: <%= item.Transmission %></li>
+    <li>Motor type: <%= item.Motor_type %></li>
+    <li>Portable Battery: <%= item.Portable_Battery %></li>
+    <li>Swappable Battery: <%= item.Swappable_Battery %></li>
+    <li>Charger Type: <%= item.Charger_Type %></li>
+    <li>Carrying capacity: <%= item.Carrying_capacity.toLocaleString() %> kg</li>
+  </ul>
+</details>
+<details>
+<summary>Height, Weight, Length</summary>
+  <ul>
+    <li>Overall Width: <%= item.Overall_Width.toLocaleString() %> mm</li>
+    <li>Overall Height: <%= item.Overall_Height.toLocaleString() %> mm</li>
+    <li>Kerb Weight: <%= item.Kerb_Weight.toLocaleString() %> kg</li>
+  </ul>
+</details>
+<details>
+<summary>Manufacturer Warranty</summary>
+  <ul>
+    <li>Battery warranty: <%= item.Battery_warranty %></li>
+    <li>Motor warranty: <%= item.Motor_warranty %></li>
+  </ul>
+</details>
+
+<details>
+<summary>Other Features</summary>
+  <ul>
+    <li>Connectivity: <%= item.Connectivity %></li>
+    <li>Navigation: <%= item.Navigation %></li>
+    <li>Operating System: <%= item.Operating_System %></li>
+    <li>Processor: <%= item.Processor %></li>
+    <li>Mobile Application: <%= item.Mobile_Application %></li>
+    <li>Other features: <a style="color:lightblue;" href="<%-item.company_link %>">More Features...</a></li>
+    <li>Colors: <%= item.colors %></li>
+  </ul>
+</details>
+
+<details>
+<summary>Reviews</summary>
+  <ul>
+    <%- item.reviews%>
+  </ul>
+</details>
+<div style="text-align:center;" >
+
+
+<a  href="<%= item.company_link%>"><button style="margin-bottom:50px;width:15%;">Buy Now</button></a>
+  <%  })  %>
+</div>
+
+<footer id="footer">
+<div class="container">
+  <div class="social-icons">
+    <a href="https://in.linkedin.com/in/sammed-jain-663572203"><i class="fab fa-linkedin fa-lg"></i></a>
+    <a href="https://github.com/sammedcjain"><i class="fab fa-github fa-lg"></i></a>
+    <a href="https://www.instagram.com/sammysammed/"><i class="fab fa-instagram fa-lg"></i></a>
+    <a href="https://twitter.com/sammysammed"><i class="fab fa-twitter fa-lg"></i></a>
+  </div>
+  <p>@sammysammed - EV Dekho</p>
+</div>
+</footer>
+<script src="https://kit.fontawesome.com/1465e7da9e.js" crossorigin="anonymous"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

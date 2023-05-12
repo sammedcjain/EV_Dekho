@@ -25,3 +25,16 @@ $.ajax({
         alert("Oops! Something went wrong.");
     }
 });
+
+// document.getElementById("addForm").addEventListener("submit", function(event) {
+//   event.preventDefault();
+//   if (check()) {
+//     this.submit();
+//   }
+// });
+//
+// function check(){
+//   ( if (typeof(document.getElementByClassname("numberCheck")))!="number"){
+//     alert("Invalid type detected");
+//   }
+// }
