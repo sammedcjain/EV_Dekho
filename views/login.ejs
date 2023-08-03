@@ -40,9 +40,15 @@
   <body>
   <h1>EV DEKHO</h1>
   <h2>Login to continue:</h2>
+  <a href="/" style="margin-top:"15px";background-color: black"><i class="fa-solid fa-arrow-left fa-2xl" style="padding-left:500px;color: #4CAF50;"></i></a>
   <form class="ev_auth" action="/login" method="post">
-    Username :<input type="text" name="username" > <br> <br>
-    Password :<input type="password" name="password" > <br> <br>
+    <% if (messages.error && messages.error.length > 0) { %>
+    <div class="alert alert-danger" role="alert" style="text-align:center;">
+      <%= messages.error[0] %>
+    </div>
+    <% } %>
+    Username :<input type="text" name="username" required> <br> <br>
+    Password :<input type="password" name="password" required> <br> <br>
     <button type="submit" name="ev-auth" value="ev-auth">Submit</button>
     <a style="margin-top:20px;" class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
       <i class="fab fa-google"></i>
@@ -50,6 +56,7 @@
     </a>
   </form>
   </body>
+  <script src="https://kit.fontawesome.com/1465e7da9e.js" crossorigin="anonymous"></script>
 </html>
 
 <%- include('partials/footer') %>

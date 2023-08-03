@@ -11,6 +11,7 @@ const findOrCreate = require('mongoose-findorcreate')
 const app = express();
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const bcrypt = require("bcrypt");
+const flash = require('connect-flash');
 
 fs = require('fs'),
 url = require('url');
@@ -29,6 +30,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // mongoose.connect("mongodb+srv://sammedcjain:mongodb8762@cluster0.gldyajt.mongodb.net/evolvedb",{useNewUrlParser:true});
 
@@ -98,7 +100,13 @@ const userSchema=new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
-
+userSchema.plugin(passportLocalMongoose, {
+  errorMessages: {
+    IncorrectUsernameError: 'Username not found',
+    UserExistsError: 'Username not found',
+    IncorrectPasswordError: 'Incorrect password'
+  }
+});
 // const User = mongoose.model('User', userSchema);
 var User = conn2.model('User',userSchema );
 passport.use(User.createStrategy());
@@ -133,11 +141,11 @@ passport.use(new GoogleStrategy({
 ));
 
 app.get("/login",function(req,res){
-  res.render("login");
+  res.render("login",{ messages: req.flash() });
 });
 
 app.get("/register",function(req,res){
-  res.render("register");
+  res.render('register', { messages: req.flash() });
 });
 
 app.get('/auth/google',
@@ -165,7 +173,7 @@ app.get('/auth/google/evdb',
           var promises = data.map((vehicle) => {
             return Ev.find({ vehicle: vehicle })
               .then((result) => {
-                console.log(result);
+                //console.log(result);
                 if (result.length > 0) {
                   vehicles.push(result);
                 }else {
@@ -217,38 +225,60 @@ app.get('/auth/google/evdb',
     }
   });
 
-  app.post("/register",function(req,res){
-    User.register({username: req.body.username}, req.body.password, function(err, user){
+  app.post("/register", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Check if the username is already taken
+    const existingUser = await User.findOne({ username });
+
+    if (existingUser) {
+      // Username is taken, set a flash message
+      req.flash('error', 'Username is already taken');
+      console.log("Username is already taken");
+      return res.redirect('/register'); // Redirect back to the registration page
+    } else {
+      // Proceed with registration
+      User.register({ username: req.body.username }, req.body.password, function(err, user) {
+        if (err) {
+          console.log(err);
+          req.flash('error', 'An error occurred during registration');
+          return res.redirect("/register");
+        }
+
+        passport.authenticate("local")(req, res, function() {
+          req.flash('success', 'Registration successful! You can now log in.');
+          res.redirect("/evdb");
+        });
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    req.flash('error', 'An error occurred.');
+    res.redirect("/register");
+  }
+});
+
+app.post("/login", function(req, res, next) {
+  passport.authenticate("local", function(err, user, info) {
+    if (err) {
+      console.log(err);
+      return next(err); // Pass the error to the next middleware
+    }
+    if (!user) {
+      req.flash('error', info.message);
+      return res.redirect('/login');
+    }
+    req.logIn(user, function(err) {
       if (err) {
         console.log(err);
-        res.redirect("/register");
-      } else {
-
-        passport.authenticate("local")(req, res, function(){
-          res.redirect("/evdb");
-        });
+        return next(err); // Pass the error to the next middleware
       }
+      return res.redirect("/evdb");
     });
-  });
+  })(req, res, next);
+});
 
-
-  app.post("/login",function(req,res){
-
-    const user = new User({
-     username: req.body.username,
-     password: req.body.password
-   });
-
-   req.login(user, function(err){
-     if (err) {
-       console.log(err);
-     } else {
-       passport.authenticate("local")(req, res, function(){
-          res.redirect("/evdb");
-        });
-      }
-    });
-  });
 
 const ev1=new Ev({
   vehicle_id:100,
@@ -524,7 +554,18 @@ app.get("/", function(req, res){
 app.get("/requirements",function(req,res){
 
   if (req.isAuthenticated()){
-      res.sendFile(__dirname+"/index.html");
+      Ev.find({}, { company: 1, _id: 0 }).then(
+        (result) => {
+          var comp_names=[];
+           result.forEach(function(each){
+              comp_names.push(each);
+           })
+           res.render("index",{companies:comp_names});
+           //console.log(comp_names)
+        }
+      ).catch(
+        (err)=> {console.log(err);}
+      )
     } else {
       res.redirect("/login");
     }

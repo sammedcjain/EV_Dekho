@@ -37,14 +37,18 @@
     <h1>EV Dekho</h1>
 
     <h2>Please select your requirements: </h2>
+
     <form class="ev" action="/data" method="post">
 
     <label for="company">Company :</label>
     <select name="company" id="company">
-    <option value="Ola">Ola</option>
-    <option value="Ather">Ather</option>
-    <option value="TVS">TVS</option>
-    <option value="any">Any</option>
+
+    <%
+            const uniqueCompanies = Array.from(new Set(companies.map(item => item.company)));
+            for (let i = 0; i < uniqueCompanies.length; i++) {
+        %>
+            <option value="<%= uniqueCompanies[i] %>"><%= uniqueCompanies[i] %></option>
+        <% } %>
     </select>
     <br>
     <label for="price">price range</label>

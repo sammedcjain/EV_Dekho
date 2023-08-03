@@ -236,8 +236,8 @@
     <form class="cal" action="/calculatorres" method="post" >
       <div class="section">
     <span ><label>Please select the type of vehicle which you have currently =</label>
-    <select onchange="carbon()" name="vehicle_type" value="select" id="vehicle_type">
-      <option value="" selected disabled hidden>Choose here</option>
+    <select onchange="carbon()" name="vehicle_type" value="select" id="vehicle_type" required>
+      <option value="" selected disabled hidden>Choose here</option >
       <option id="petrol_vehicle" value="Petrol">Petrol Vehicle</option>
       <option id="diesel_vehicle" value="Diesel">Diesel Vehicle</option>
     </select>
@@ -253,29 +253,30 @@
 <button style="margin-bottom:25px;" type="button" onclick="nothidden()" name="button">Please click here if your EV is not in the list</button>
 
       <input hidden type="number" name="key" id="key">
-<label for="distance">How many kms do you travel everyday ?</label> <input type="number" name="distance" id="distance" placeholder="20 kms"> <br>
+<label for="distance">How many kms do you travel everyday ?</label> <input required type="number" name="distance" id="distance" placeholder="20 kms"> <br>
 </div>
 <div class="section">
       <h2 style="margin-top:10px;">For your <span class="PorD">Petrol/Diesel</span> Vehicle</h2>
-      <label for="milage">Your <span class="PorD">Petrol/Diesel</span> vehicle's milage ?</label> <input type="number" id="milage" name="milage" placeholder="50 kms"> <br>
-      <label for="petrol">Enter the <span class="PorD">Petrol/Diesel</span> price in your area = </label> <input type="number" id="petrol" name="petrol" placeholder="100Rs"> <br>
-      <label for="service-p">Service charges / year for <span class="PorD">Petrol/Diesel</span> vehicle = </label> <input type="number" id="service-p" name="service" placeholder="2000Rs"> <br>
+      <label for="milage">Your <span class="PorD">Petrol/Diesel</span> vehicle's milage ?</label> <input required type="number" id="milage" name="milage" placeholder="50 kms"> <br>
+      <label for="petrol">Enter the <span class="PorD">Petrol/Diesel</span> price in your area = </label> <input required type="number" id="petrol" name="petrol" placeholder="100Rs"> <br>
+      <label for="service-p">Service charges / year for <span class="PorD">Petrol/Diesel</span> vehicle = </label> <input required type="number" id="service-p" name="service" placeholder="2000Rs"> <br>
 </div>
 <div class="section">
       <h2 style="margin-top:15px;">For EV =</h2>
 
       <div id="hide">
-      <label  for="e-consumption">Electricity consumption of your EV vehicle per charge = </label> <input  type="number" id="e-consumption" name="consumption" placeholder="3Kw"><br>
+      <label  for="e-consumption">Electricity consumption of your EV vehicle per charge = </label> <input  required type="number" id="e-consumption" name="consumption" placeholder="3Kw"><br>
 
-      <label  for="range">Range for your EV : </label><input type="number" name="range" id="range"  placeholder="100 Kms">  <br>
+      <label  for="range">Range for your EV : </label><input required type="number" name="range" id="range"  placeholder="100 Kms">  <br>
     </div>
 
-      <label for="e-charges">Electricity charges per Kw in your city = </label><input id="e-charges" type="number" name="charges" placeholder="7Rs">
+      <label for="e-charges">Electricity charges per Kw in your city = </label><input required id="e-charges" type="number" name="charges" placeholder="7Rs">
       <br>
       <button style="width:100%;" onclick="" type="submit" name="Calculate">Calculate</button>
 
     </form>
 </div>
+<p style="text-align:center;color:lightgreen;">* Placeholder values are only for your reference ...Kindly fill all the inputs :}</p> 
 <footer id="footer">
 <div class="container">
   <div class="social-icons">
