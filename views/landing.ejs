@@ -19,9 +19,15 @@
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="/evdb">Home</a>
 		      		</li>
+							<% if(user==0) {%>
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="/login">Login</a>
 		      		</li>
+							<% }else{%>
+							<li class="nav-item">
+			        	<a class="nav-link" href="/logout">Logout</a>
+			      	</li>
+							<%}%>
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="/register">Register</a>
 		      		</li>
@@ -101,6 +107,7 @@
 </div>
 </div>
 </section>
+<% if(user==0) {%>
 <section class="module-small free-trial" style="text-align:center;margin:auto;">
   <div class="container text-center" style="margin-top:70px;">
     <div class="row" >
@@ -122,6 +129,7 @@
     <div style="margin-bottom:70px;"><a class="btn btn-lg btn-warning btn-circle" href="/register" style="color:black">Register</a></div>
   </div>
 </section>
+<%}%>
 </main>
 <footer id="footer">
 <div class="container">
