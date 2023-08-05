@@ -28,12 +28,16 @@
 
 function hide(){
   document.getElementById("hide").classList.add("hidden");
+  document.getElementById("e-consumption").required = false;
+  document.getElementById("range").required = false;
 }
 
 function nothidden(){
   alert("Please enter your vehicle's range and electricity consumption manually ->");
   document.getElementById("hide").classList.remove("hidden");
   document.getElementById("key").value = "1";
+  document.getElementById("e-consumption").required = true;
+  document.getElementById("range").required = true;
 }
 
 function carbon(){
