@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Ev = require('../models/Ev');
+const Ev = require('../models/ev.js');
 
 router.get("/compare", function(req, res) {
   Ev.find({}, {
